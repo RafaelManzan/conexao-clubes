@@ -1,0 +1,5 @@
+# Configurações locais e chaves privadas de API
+.env
+.env.example
+*.md
+node_modules/

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Clubes - Transforma a tua Escola</title>
+    <link rel="icon" href="img/LogoSemTextoIco.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo-container">
+                <img src="img/Logo.png" alt="Conexão Clubes Logo" class="navbar-logo">
+            </a>
+            <nav class="nav-menu">
+                <a href="#como-funciona" class="nav-link">Como Funciona</a>
+                <a href="#" class="btn btn-secondary" id="navLoginBtn">Entrar</a>
+                <a href="#" class="btn btn-primary" id="navRegisterBtn">Cadastrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">Cria o teu próprio clube. <br>Encontra a tua <span>tribo</span>.</h1>
+                <p class="hero-subtitle">Combate o desengajamento escolar ligando-te a estudantes que partilham dos mesmos interesses que tu. Sugere ideias, vota e participa!</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary btn-large" id="heroStartBtn">Começar Agora</a>
+                    <a href="#como-funciona" class="btn btn-outline btn-large">Saber Mais</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="features-section">
+            <div class="section-header">
+                <h2>Como funciona o sistema?</h2>
+                <p>Uma dinâmica democrática e participativa em três passos simples.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="card-icon icon-purple">💡</div>
+                    <h3>1. Sugestão e Votação</h3>
+                    <p>Tens uma ideia para um clube de xadrez, robótica ou cinema? Sugere na plataforma e recolhe votos dos teus colegas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon icon-green">⚖️</div>
+                    <h3>2. Moderação Direta</h3>
+                    <p>Assim que a tua sugestão atingir a meta de votos, a direção da escola avalia e aprova a abertura oficial do clube.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon icon-blue">📱</div>
+                    <h3>3. Rede Social Interna</h3>
+                    <p>Com o clube aprovado, ganhas um espaço exclusivo para partilhar publicações, fotos, comentar e interagir com os membros.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="auth-modal-overlay" id="authModal">
+        <div class="auth-modal-card">
+            <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            
+            <div class="modal-header">
+                <img src="img/logoTextoDireita.png" alt="Conexão Clubes" class="modal-logo">
+                <h2 id="modalTitle">Entrar no Conexão</h2>
+                <p id="modalSubtitle">Bem-vindo de volta! Introduz os teus dados.</p>
+            </div>
+
+            <form class="auth-form" id="authForm">
+                <div id="modalAlert" class="modal-alert"></div>
+
+                <div class="form-group" id="nameField" style="display: none;">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" placeholder="Ex: Gabriel Silva">
+                </div>
+
+                <div class="form-group" id="emailField">
+                    <label for="authEmail">E-mail</label>
+                    <input type="email" id="authEmail" placeholder="Ex: teu-nome@gmail.com" required>
+                </div>
+
+                <div class="form-group" id="passwordField">
+                    <label for="authPassword">Palavra-passe</label>
+                    <input type="password" id="authPassword" placeholder="Introduz a tua palavra-passe">
+                </div>
+
+                <div class="form-group" id="confirmPasswordField" style="display: none;">
+                    <label for="authConfirmPassword">Confirmar Palavra-passe</label>
+                    <input type="password" id="authConfirmPassword" placeholder="Repita a sua palavra-passe">
+                </div>
+
+                <div id="forgotPasswordContainer" style="text-align: right; margin-top: -0.5rem;">
+                    <a href="#" id="forgotPasswordLink" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 500;">Esqueci-me da palavra-passe</a>
+                </div>
+
+                <div id="verificationMessageContainer" style="display: none; text-align: center; color: var(--text-muted); margin: 0.5rem 0;">
+                    <p style="font-size: 0.95rem;">Enviámos um link de ativação para o seu e-mail escolar. Por favor, verifique a sua caixa de entrada e spam antes de tentar entrar.</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" id="authSubmitBtn">Continuar</button>
+            </form>
+
+            <div class="modal-footer">
+                <p id="toggleAuthText">Ainda não tens conta? <a href="#" id="authToggleLink">Criar uma conta</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Conexão Clubes. Projeto desenvolvido para o Trabalho de Conclusão de Curso.</p>
+    </footer>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

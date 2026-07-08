@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Conexão Clubes</title>
+    <link rel="icon" href="img/LogoSemTextoIco.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <img src="img/Logo.png" alt="Conexão Clubes Logo" class="navbar-logo">
+            </div>
+            <nav class="nav-menu">
+                <button class="tab-btn active" data-tab="meus-clubes">Meus Clubes</button>
+                <button class="tab-btn" data-tab="sugestoes">Sugestões e Votos</button>
+                <button class="tab-btn" data-tab="rede-social">Rede Social</button>
+                <button class="tab-btn" data-tab="perfil">Perfil</button> </nav>    
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-content" style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem;">
+        <h2 style="margin-bottom: 1.5rem; font-family: var(--font-title);">Olá, <span id="userName">...</span>! 👋</h2>
+
+        <section id="meus-clubes" class="tab-content">
+            <div id="clubes-lista-container">
+                <h3 style="font-family: var(--font-title); margin-bottom: 1.5rem; color: var(--text-main);">Os Meus Clubes</h3>
+                <div id="clubesGrid" class="clubes-grid">
+                    </div>
+            </div>
+
+            <div id="clubeDetalheContainer" style="display: none;">
+                <button id="btnVoltarLista" class="btn btn-secondary" style="margin-bottom: 1.5rem; padding: 0.5rem 1rem;">
+                    ← Voltar para a lista
+                </button>
+                
+                <div class="clube-detalhe-card">
+                    <div class="clube-banner-wrapper">
+                        <img id="detalheBanner" src="" alt="Banner do Clube" class="clube-detalhe-banner">
+                        
+                        <div id="adminBannerEdit" class="admin-banner-panel" style="display: none;">
+                            <input type="text" id="inputNovoBanner" placeholder="Cole aqui o URL de uma nova imagem da internet para o banner...">
+                            <button id="btnSalvarBanner" class="btn btn-primary btn-sm">Atualizar Banner</button>
+                        </div>
+                    </div>
+                    
+                    <div class="clube-detalhe-header">
+                        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                            <h2 id="detalheNome" style="font-family: var(--font-title); color: var(--text-main);">Nome do Clube</h2>
+                            <span id="detalheCategoria" class="clube-badge badge-membro">Categoria</span>
+                        </div>
+                        <p style="margin-top: 0.5rem; color: var(--text-muted);">
+                            <strong>Professor Responsável:</strong> <span id="detalheResponsavel">-</span>
+                        </p>
+                    </div>
+
+                    <div class="clube-detalhe-body">
+                        <div class="detalhe-seccao">
+                            <h4 style="font-family: var(--font-title); margin-bottom: 0.5rem;">📢 Mural de Avisos</h4>
+                            <div id="muralExibicao" class="mural-box">Texto do aviso...</div>
+                            
+                            <div id="adminMuralEdit" style="display: none; margin-top: 0.75rem;">
+                                <textarea id="txtNovoMural" rows="3" placeholder="Escreva um novo aviso importante para os alunos..." style="width: 100%; border-radius: var(--radius); padding: 0.75rem; border: 1px solid rgba(0,0,0,0.15); font-family: var(--font-body); resize: vertical;"></textarea>
+                                <button id="btnSalvarMural" class="btn btn-primary btn-sm" style="margin-top: 0.5rem;">Publicar no Mural</button>
+                            </div>
+                        </div>
+
+                        <div class="detalhe-seccao">
+                            <h4 style="font-family: var(--font-title); margin-bottom: 0.5rem;">📅 Agenda e Horários</h4>
+                            <div id="agendaExibicao">
+                                </div>
+                            
+                            <div id="adminAgendaEdit" style="display: none; margin-top: 1rem; background: rgba(0,0,0,0.02); padding: 1rem; border-radius: var(--radius); border: 1px dashed rgba(0,0,0,0.15);">
+                                <h5 style="margin-bottom: 0.7rem;">Adicionar Novo Horário</h5>
+                                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                                    <input type="text" id="inputAgendaDia" placeholder="Ex: Terça-feira" style="flex: 1; min-width: 120px; padding: 0.4rem; border-radius: 6px; border: 1px solid #ccc;">
+                                    <input type="text" id="inputAgendaHoras" placeholder="Ex: 14:00 - 15:30" style="flex: 1; min-width: 120px; padding: 0.4rem; border-radius: 6px; border: 1px solid #ccc;">
+                                    <input type="text" id="inputAgendaSala" placeholder="Ex: Sala A2" style="flex: 1; min-width: 100px; padding: 0.4rem; border-radius: 6px; border: 1px solid #ccc;">
+                                </div>
+                                <button id="btnAdicionarHorario" class="btn btn-secondary btn-sm">+ Adicionar à Agenda</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="membroAcoesContainer" style="margin-top: 2.5rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1.5rem; text-align: right; display: none;">
+                        <button id="btnSairClube" class="btn btn-danger" style="padding: 0.6rem 1.2rem;">🏃 Sair deste Clube</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sugestoes" class="tab-content" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.25rem;">Sugestões e Votos</h3>
+                    <p class="text-muted" style="margin: 0;">Propõe novas ideias de clubes para a escola ou vota nas sugestões dos teus colegas!</p>
+                </div>
+                <button id="btnAbrirModalSugestao" class="btn btn-primary" style="padding: 0.6rem 1.2rem;">💡 Sugerir Novo Clube</button>
+            </div>
+
+            <div id="container-sugestoes" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+                <p class="text-muted">A carregar sugestões...</p>
+            </div>
+
+            <div id="modalSugestao" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; padding: 1rem;">
+                <div class="profile-card" style="width: 100%; max-width: 500px; background: var(--bg-card); box-shadow: var(--shadow); border-radius: var(--radius); padding: 2rem; position: relative;">
+                    <h3 style="margin-bottom: 1.5rem; font-family: var(--font-title);">💡 Sugerir Novo Clube</h3>
+                    
+                    <form id="formSugestao" class="profile-form">
+                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                            <label for="sugestaoNome" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Nome do Clube Sugerido</label>
+                            <input type="text" id="sugestaoNome" required placeholder="Ex: Clube de Xadrez ou Astronomia" style="width: 100%;">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 1.25rem;">
+                            <label for="sugestaoCategoria" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Categoria</label>
+                            <input type="text" id="sugestaoCategoria" required placeholder="Ex: Ciência, Desporto, Tabuleiro, Artes" style="width: 100%;">
+                        </div>
+                        
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="sugestaoDescricao" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Descrição e Justificativa</label>
+
+                            <textarea id="sugestaoDescricao" required rows="4" placeholder="Explica resumidamente por que razão a escola devia ter este clube..." style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); font-family: var(--font-body); resize: none;"></textarea>
+
+                            <button type="button" id="btnAprimorarIA" class="btn-ia-aprimorar">
+                                <span class="btn-ia-texto">✦ Aprimorar com IA</span>
+                                <span class="btn-ia-spinner" style="display: none;">A processar ideias...</span>
+                            </button>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                            <button type="button" id="btnFecharModalSugestao" class="btn btn-secondary" style="background: #e5e7eb; color: #374151;">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Submeter Ideia</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="rede-social" class="tab-content" style="display: none;">
+            <div style="max-width: 700px; margin: 0 auto; padding: 1rem 0;">
+                
+                <div class="profile-card" style="margin-bottom: 2rem; padding: 1.5rem;">
+                    <h3 style="margin-bottom: 1rem; font-family: var(--font-title); font-size: 1.25rem;">Comunidade Conexão Clubes</h3>
+                    <form id="formCriarPost">
+                        <div style="margin-bottom: 1rem;">
+                            <textarea id="postTexto" required rows="3" placeholder="O que está a acontecer no teu clube hoje? Partilha com a escola..." style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); font-family: var(--font-body); resize: none; font-size: 0.95rem;"></textarea>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <input type="url" id="postImagemUrl" placeholder="🔗 Colar link de uma imagem da internet (Opcional)" style="width: 100%; padding: 0.6rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); font-size: 0.85rem;">
+                        </div>
+                        <div style="text-align: right;">
+                            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">✨ Publicar no Feed</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="feed-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <p class="text-muted">A carregar a cronologia...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="perfil" class="tab-content" style="display: none;">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-family: var(--font-title);">O Meu Perfil</h3>
+            
+            <div class="profile-container">
+                
+                <div id="currentAvatarBox" class="current-avatar-container" style="display: none;">
+                    <img id="currentAvatarImg" src="" class="current-avatar-img" alt="O meu avatar">
+                    <div>
+                        <p style="font-weight: 600; color: var(--text-main);">Avatar Ativo</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Este é o ícone visível no teu perfil escolar.</p>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h4>Escolha o seu Avatar</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Selecione uma das opções abaixo para personalizar a sua conta:</p>
+                    <div class="avatar-grid">
+                        <img src="assets/avatar_01.jpeg" class="avatar-option" data-avatar="avatar_01.jpeg" alt="Avatar 1">
+                        <img src="assets/avatar_02.jpeg" class="avatar-option" data-avatar="avatar_02.jpeg" alt="Avatar 2">
+                        <img src="assets/avatar_03.jpeg" class="avatar-option" data-avatar="avatar_03.jpeg" alt="Avatar 3">
+                        <img src="assets/avatar_04.jpeg" class="avatar-option" data-avatar="avatar_04.jpeg" alt="Avatar 4">
+                        <img src="assets/avatar_05.jpeg" class="avatar-option" data-avatar="avatar_05.jpeg" alt="Avatar 5">
+                    </div>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <h4>Alterar Palavra-passe</h4>
+                        <form id="passwordChangeForm" class="profile-form">
+                            <div class="form-group">
+                                <label for="currentPassword">Palavra-passe Atual</label>
+                                <input type="password" id="currentPassword" required placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Nova Palavra-passe</label>
+                                <input type="password" id="newPassword" required placeholder="Mínimo 6 caracteres">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Atualizar Palavra-passe</button>
+                        </form>
+                    </div>
+
+                    <div class="profile-card">
+                        <h4>Alterar E-mail</h4>
+                        <form id="emailChangeForm" class="profile-form">
+                            <div class="form-group">
+                                <label for="emailAuthPassword">Palavra-passe Atual (Confirmação)</label>
+                                <input type="password" id="emailAuthPassword" required placeholder="••••••••">
+                            </div>
+                            <div class="form-group">
+                                <label for="newEmail">Novo E-mail</label>
+                                <input type="email" id="newEmail" required placeholder="exemplo@escola.com">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Atualizar E-mail</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; text-align: center;">
+                    <button id="profileLogoutBtn" class="btn btn-danger">Sair da Conta</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="dashboard.js"></script>
+    <script type="module" src="formulario.js"></script>
+</body>
+</html>
